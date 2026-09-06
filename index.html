@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =================================================
+         BASIC META
+    ================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Utkarsh Gupta - Software Engineer | Java Developer"
+    >
+
+    <meta
+        name="author"
+        content="Utkarsh Gupta"
+    >
+
+    <meta
+        name="theme-color"
+        content="#050908"
+    >
+
+
+    <!-- =================================================
+         TITLE
+    ================================================== -->
+
+    <title>
+        Utkarsh Gupta | Terminal Portfolio
+    </title>
+
+
+    <!-- =================================================
+         STYLESHEET
+    ================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =================================================
+         CRT CONTAINER
+    ================================================== -->
+
+    <div class="crt">
+
+
+        <!-- =================================================
+             TERMINAL WINDOW
+        ================================================== -->
+
+        <main
+            class="terminal"
+            aria-label="Utkarsh Gupta Portfolio Terminal"
+        >
+
+
+            <!-- =============================================
+                 TERMINAL HEADER
+            ============================================== -->
+
+            <header class="terminal-header">
+
+
+                <!-- =========================================
+                     MACOS STYLE TRAFFIC LIGHTS
+                ========================================== -->
+
+                <div
+                    class="traffic-lights"
+                    aria-hidden="true"
+                >
+
+                    <span class="light red"></span>
+
+                    <span class="light yellow"></span>
+
+                    <span class="light green"></span>
+
+                </div>
+
+
+                <!-- =========================================
+                     TERMINAL TITLE
+                ========================================== -->
+
+                <div class="terminal-title">
+
+                    utkarsh@portfolio-terminal
+
+                </div>
+
+
+            </header>
+
+
+            <!-- =============================================
+                 TERMINAL SCREEN
+            ============================================== -->
+
+            <section
+                class="terminal-screen"
+                id="terminalBody"
+                aria-live="polite"
+            >
+
+
+                <!-- =========================================
+                     TERMINAL OUTPUT
+                ========================================== -->
+
+                <div id="output"></div>
+
+
+                <!-- =========================================
+                     COMMAND INPUT
+                ========================================== -->
+
+                <div
+                    class="input-line"
+                    id="inputLine"
+                >
+
+
+                    <!-- TERMINAL PROMPT -->
+
+                    <span
+                        class="prompt"
+                        aria-hidden="true"
+                    >
+                        utkarsh@portfolio:~$
+                    </span>
+
+
+                    <!-- COMMAND INPUT -->
+
+                    <input
+                        type="text"
+                        id="commandInput"
+                        autocomplete="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        aria-label="Enter terminal command"
+                        placeholder=""
+                    >
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

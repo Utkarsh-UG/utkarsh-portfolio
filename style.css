@@ -1,0 +1,999 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+
+    --green: #00ff41;
+
+    --green-bright: #39ff14;
+
+    --green-dark: #0aff0a;
+
+    --background: #050908;
+
+    --terminal: #07100d;
+
+    --header: #202620;
+
+    --border: #28352f;
+
+    --muted: #7d8b84;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+html,
+body {
+
+    width: 100%;
+
+    min-height: 100%;
+
+}
+
+
+body {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #111b17 0%,
+            #070b09 55%,
+            #020403 100%
+        );
+
+    color: var(--green);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    overflow: hidden;
+
+}
+
+
+/* =====================================================
+   CRT CONTAINER
+===================================================== */
+
+.crt {
+
+    width: 100vw;
+
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 12px;
+
+}
+
+
+/* =====================================================
+   TERMINAL WINDOW
+===================================================== */
+
+.terminal {
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    height: 96vh;
+
+    background:
+        linear-gradient(
+            rgba(5, 15, 11, 0.97),
+            rgba(2, 8, 6, 0.99)
+        );
+
+    border: 1px solid #27332e;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 0 30px rgba(0, 255, 65, 0.04),
+        0 25px 80px rgba(0, 0, 0, 0.75);
+
+}
+
+
+/* =====================================================
+   TERMINAL HEADER
+===================================================== */
+
+.terminal-header {
+
+    height: 55px;
+
+    background:
+        linear-gradient(
+            #242b26,
+            #1c211e
+        );
+
+    border-bottom: 1px solid #303a35;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+}
+
+
+/* =====================================================
+   TRAFFIC LIGHTS
+===================================================== */
+
+.traffic-lights {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding-left: 17px;
+
+}
+
+
+.light {
+
+    width: 15px;
+
+    height: 15px;
+
+    border-radius: 50%;
+
+    display: block;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,0.08);
+
+}
+
+
+.red {
+
+    background: #ff3030;
+
+}
+
+
+.yellow {
+
+    background: #ffd21f;
+
+}
+
+
+.green {
+
+    background: #12e812;
+
+}
+
+
+/* =====================================================
+   TERMINAL TITLE
+===================================================== */
+
+.terminal-title {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #a4aaa6;
+
+    font-size: 16px;
+
+    letter-spacing: 0.3px;
+
+}
+
+
+/* =====================================================
+   SCREEN
+===================================================== */
+
+.terminal-screen {
+
+    height: calc(100% - 55px);
+
+    padding: 25px 30px;
+
+    overflow-y: auto;
+
+    position: relative;
+
+    color: var(--green);
+
+    text-shadow:
+        0 0 4px rgba(0, 255, 65, 0.45);
+
+}
+
+
+/* =====================================================
+   CRT SCANLINES
+===================================================== */
+
+.terminal-screen::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0.16) 3px,
+            rgba(0, 0, 0, 0.16) 4px
+        );
+
+}
+
+
+/* =====================================================
+   CRT VIGNETTE
+===================================================== */
+
+.terminal-screen::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 11;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 55%,
+            rgba(0, 0, 0, 0.32) 100%
+        );
+
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+.terminal-screen::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+.terminal-screen::-webkit-scrollbar-track {
+
+    background: #07100d;
+
+}
+
+
+.terminal-screen::-webkit-scrollbar-thumb {
+
+    background: #24322c;
+
+}
+
+
+.terminal-screen::-webkit-scrollbar-thumb:hover {
+
+    background: #32443b;
+
+}
+
+
+/* =====================================================
+   OUTPUT
+===================================================== */
+
+.output {
+
+    margin-bottom: 18px;
+
+    white-space: pre-wrap;
+
+    line-height: 1.55;
+
+}
+
+
+.output.center {
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   COLORS
+===================================================== */
+
+.green {
+
+    color: var(--green);
+
+}
+
+
+.bright {
+
+    color: var(--green-bright);
+
+}
+
+
+.dim {
+
+    color: #7c9b88;
+
+}
+
+
+.error {
+
+    color: #ff4d4d;
+
+}
+
+
+.warning {
+
+    color: #ffd21f;
+
+}
+
+
+/* =====================================================
+   NAME ASCII
+===================================================== */
+
+.name-ascii {
+
+    color: var(--green-bright);
+
+    font-weight: bold;
+
+    font-size: clamp(
+        24px,
+        5.2vw,
+        76px
+    );
+
+    line-height: 0.82;
+
+    letter-spacing: -5px;
+
+    text-align: center;
+
+    margin-top: 8px;
+
+    margin-bottom: 5px;
+
+    text-shadow:
+        0 0 5px #00ff41,
+        0 0 15px rgba(0,255,65,0.7),
+        0 0 30px rgba(0,255,65,0.35);
+
+}
+
+
+/* =====================================================
+   INTRO ROLE
+===================================================== */
+
+.intro-role {
+
+    text-align: center;
+
+    color: var(--green);
+
+    font-size: 18px;
+
+    margin-bottom: 28px;
+
+}
+
+
+/* =====================================================
+   DIVIDERS
+===================================================== */
+
+.divider {
+
+    color: #244c34;
+
+}
+
+
+/* =====================================================
+   PROMPT
+===================================================== */
+
+.input-line {
+
+    display: flex;
+
+    align-items: center;
+
+    min-height: 25px;
+
+}
+
+
+.prompt {
+
+    color: var(--green);
+
+    white-space: nowrap;
+
+    margin-right: 9px;
+
+    text-shadow:
+        0 0 5px rgba(0,255,65,0.5);
+
+}
+
+
+#commandInput {
+
+    flex: 1;
+
+    min-width: 0;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: var(--green);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 16px;
+
+    caret-color: var(--green);
+
+    text-shadow:
+        0 0 5px rgba(0,255,65,0.6);
+
+}
+
+
+/* =====================================================
+   INPUT GLOW
+===================================================== */
+
+#commandInput {
+
+    animation:
+        inputGlow 1.5s infinite;
+
+}
+
+
+@keyframes inputGlow {
+
+    0%,
+    100% {
+
+        text-shadow:
+            0 0 5px rgba(0,255,65,0.5);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 8px rgba(0,255,65,0.8);
+
+    }
+
+}
+
+
+/* =====================================================
+   TYPING CURSOR
+===================================================== */
+
+.typing-cursor {
+
+    display: inline-block;
+
+    width: 9px;
+
+    height: 17px;
+
+    background: var(--green);
+
+    margin-left: 3px;
+
+    vertical-align: middle;
+
+    animation:
+        cursorBlink 0.8s infinite;
+
+}
+
+
+@keyframes cursorBlink {
+
+    0%,
+    49% {
+
+        opacity: 1;
+
+    }
+
+    50%,
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   CONTACT FORM
+===================================================== */
+
+.contact-form {
+
+    width: 100%;
+
+    max-width: 720px;
+
+    border: 1px solid #245b37;
+
+    padding: 20px;
+
+    margin-top: 12px;
+
+    background:
+        rgba(0, 20, 8, 0.35);
+
+    box-shadow:
+        inset 0 0 25px rgba(0,255,65,0.025);
+
+}
+
+
+/* =====================================================
+   CONTACT TITLE
+===================================================== */
+
+.contact-title {
+
+    color: var(--green-bright);
+
+    font-size: 19px;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =====================================================
+   CONTACT SUBTITLE
+===================================================== */
+
+.contact-subtitle {
+
+    color: #7d9c87;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================================
+   CONTACT LABELS
+===================================================== */
+
+.contact-form label {
+
+    display: block;
+
+    margin-top: 13px;
+
+    margin-bottom: 5px;
+
+    color: var(--green);
+
+}
+
+
+/* =====================================================
+   CONTACT INPUTS
+===================================================== */
+
+.contact-form input,
+
+.contact-form textarea {
+
+    width: 100%;
+
+    background: #020805;
+
+    border: 1px solid #254b34;
+
+    color: var(--green);
+
+    padding: 10px;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 14px;
+
+    outline: none;
+
+    text-shadow:
+        0 0 4px rgba(0,255,65,0.4);
+
+}
+
+
+/* =====================================================
+   CONTACT INPUT FOCUS
+===================================================== */
+
+.contact-form input:focus,
+
+.contact-form textarea:focus {
+
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 8px rgba(0,255,65,0.12);
+
+}
+
+
+/* =====================================================
+   CONTACT TEXTAREA
+===================================================== */
+
+.contact-form textarea {
+
+    min-height: 130px;
+
+    resize: vertical;
+
+}
+
+
+/* =====================================================
+   CONTACT BUTTON
+===================================================== */
+
+.contact-form button {
+
+    margin-top: 17px;
+
+    padding: 10px 18px;
+
+    background: transparent;
+
+    border: 1px solid var(--green);
+
+    color: var(--green);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   CONTACT BUTTON HOVER
+===================================================== */
+
+.contact-form button:hover {
+
+    background:
+        rgba(0,255,65,0.12);
+
+    box-shadow:
+        0 0 12px rgba(0,255,65,0.2);
+
+}
+
+
+/* =====================================================
+   CONTACT STATUS
+===================================================== */
+
+.contact-status {
+
+    margin-top: 14px;
+
+    min-height: 20px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   CONTACT SENDING
+===================================================== */
+
+.contact-status.sending {
+
+    color: var(--green);
+
+    text-shadow:
+        0 0 5px rgba(0,255,65,0.5);
+
+}
+
+
+/* =====================================================
+   CONTACT ERROR
+===================================================== */
+
+.contact-status.error {
+
+    color: #ff4d4d;
+
+    text-shadow:
+        0 0 5px rgba(255,77,77,0.35);
+
+}
+
+
+/* =====================================================
+   CONTACT SUCCESS
+===================================================== */
+
+.contact-success {
+
+    color: var(--green);
+
+    line-height: 1.7;
+
+    text-shadow:
+        0 0 5px rgba(0,255,65,0.45);
+
+}
+
+
+/* =====================================================
+   CONTACT SUCCESS CHECKMARK
+===================================================== */
+
+.contact-success div:nth-child(3) {
+
+    color: var(--green-bright);
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 7px rgba(0,255,65,0.6);
+
+}
+
+
+/* =====================================================
+   DISABLED CONTACT BUTTON
+===================================================== */
+
+.contact-form button:disabled {
+
+    opacity: 0.5;
+
+    cursor: wait;
+
+}
+
+
+/* =====================================================
+   LINKS
+===================================================== */
+
+.portfolio-link {
+
+    color: var(--green);
+
+    text-decoration: none;
+
+}
+
+
+.portfolio-link:hover {
+
+    color: var(--green-bright);
+
+    text-shadow:
+        0 0 7px rgba(0,255,65,0.7);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .crt {
+
+        padding: 0;
+
+    }
+
+
+    .terminal {
+
+        width: 100%;
+
+        height: 100vh;
+
+        border-radius: 0;
+
+        border: none;
+
+    }
+
+
+    .terminal-header {
+
+        height: 48px;
+
+    }
+
+
+    .terminal-title {
+
+        font-size: 12px;
+
+    }
+
+
+    .terminal-screen {
+
+        height: calc(100% - 48px);
+
+        padding: 20px 15px;
+
+    }
+
+
+    .output {
+
+        line-height: 1.5;
+
+    }
+
+
+    .prompt {
+
+        font-size: 13px;
+
+    }
+
+
+    #commandInput {
+
+        font-size: 13px;
+
+    }
+
+
+    .intro-role {
+
+        font-size: 14px;
+
+    }
+
+
+    .name-ascii {
+
+        font-size: 27px;
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .contact-form {
+
+        padding: 15px;
+
+    }
+
+
+    .contact-title {
+
+        font-size: 16px;
+
+    }
+
+
+    .contact-subtitle {
+
+        font-size: 13px;
+
+    }
+
+
+    .contact-form input,
+
+    .contact-form textarea {
+
+        font-size: 13px;
+
+    }
+
+
+    .contact-form button {
+
+        width: 100%;
+
+    }
+
+}
